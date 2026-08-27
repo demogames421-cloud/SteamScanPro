@@ -450,7 +450,7 @@
         function detectUserLanguage() {
             let savedLang = localStorage.getItem('userPreferredLang');
             if (savedLang) return savedLang;
-            return 'ar'; // اجبار اللغة العربية افتراضياً عند الدخول لأول مرة
+            return 'ar';
         }
 
         langSelector.addEventListener('change', (e) => {
@@ -459,18 +459,25 @@
             setLanguage(selectedLang);
         });
 
+        // إدارة التقييم بالنجوم (تبدأ بنجمة واحدة افتراضياً)
         const stars = document.querySelectorAll('.star');
-        let selectedRating = 5;
+        let selectedRating = 1;
+
+        function updateStarsDisplay(rating) {
+            stars.forEach((star, index2) => {
+                star.style.color = index2 < rating ? '#fbbf24' : '#475569';
+            });
+        }
 
         stars.forEach((star, index1) => {
             star.addEventListener('click', () => {
                 selectedRating = index1 + 1;
-                stars.forEach((star, index2) => {
-                    star.style.color = index2 < selectedRating ? '#fbbf24' : '#475569';
-                });
+                updateStarsDisplay(selectedRating);
             });
         });
-        stars.forEach(star => star.style.color = '#fbbf24');
+        
+        // ضبط العرض الافتراضي على نجمة واحدة عند بدء التشغيل
+        updateStarsDisplay(selectedRating);
 
         const reviewForm = document.getElementById('reviewForm');
         const reviewsList = document.getElementById('reviewsList');
@@ -489,12 +496,11 @@
 
             let reviews = JSON.parse(localStorage.getItem('steamScanReviews')) || [];
             reviews.unshift(newReview);
-            localStorage.getItem('steamScanReviews', JSON.stringify(reviews));
             localStorage.setItem('steamScanReviews', JSON.stringify(reviews));
 
             reviewForm.reset();
-            selectedRating = 5;
-            stars.forEach(star => star.style.color = '#fbbf24');
+            selectedRating = 1;
+            updateStarsDisplay(selectedRating);
             loadReviews();
         });
 
