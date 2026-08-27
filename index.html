@@ -3,348 +3,176 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>SteamScan Pro</title>
-    <style>
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-        body {
-            background-color: #0b0f19;
-            color: #ffffff;
-            padding: 20px;
-            transition: direction 0.3s ease;
-        }
-        .container {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-        .header-bar {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 25px;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-        h2 {
-            color: #38bdf8;
-        }
-        .lang-select {
-            background: #1e293b;
-            color: #fff;
-            border: 1px solid #334155;
-            padding: 8px 12px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-        }
-        .review-form-box {
-            background: #1e293b;
-            padding: 25px;
-            border-radius: 12px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-            margin-bottom: 30px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        .form-group label {
-            display: block;
-            margin-bottom: 8px;
-            font-weight: bold;
-        }
-        .form-group input, .form-group textarea {
-            width: 100%;
-            padding: 12px;
-            border-radius: 8px;
-            border: 1px solid #334155;
-            background: #0f172a;
-            color: #fff;
-            font-size: 16px;
-        }
-        .star-rating {
-            display: flex;
-            gap: 5px;
-            cursor: pointer;
-            font-size: 28px;
-            direction: ltr;
-        }
-        body[dir="rtl"] .star-rating {
-            justify-content: flex-end;
-        }
-        body[dir="ltr"] .star-rating {
-            justify-content: flex-start;
-        }
-        .star {
-            color: #475569;
-            transition: color 0.2s;
-        }
-        .submit-btn {
-            background: #0284c7;
-            color: white;
-            border: none;
-            padding: 12px 20px;
-            border-radius: 8px;
-            font-size: 16px;
-            cursor: pointer;
-            width: 100%;
-            transition: background 0.3s;
-        }
-        .submit-btn:hover {
-            background: #0369a1;
-        }
-        .reviews-list {
-            display: flex;
-            flex-direction: column;
-            gap: 15px;
-        }
-        .review-card {
-            background: #1e293b;
-            padding: 20px;
-            border-radius: 10px;
-        }
-        body[dir="rtl"] .review-card {
-            border-right: 4px solid #0284c7;
-            border-left: none;
-        }
-        body[dir="ltr"] .review-card {
-            border-left: 4px solid #0284c7;
-            border-right: none;
-        }
-        .review-header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-        }
-        .reviewer-name {
-            font-weight: bold;
-            font-size: 18px;
-            color: #38bdf8;
-        }
-        .review-stars {
-            color: #fbbf24;
-            font-size: 18px;
-        }
-        .review-text {
-            color: #cbd5e1;
-            line-height: 1.6;
-        }
-    </style>
+    <title>SteamScan Pro - فحص قطع الهاردوير وأداء الألعاب</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- استيراد خط عربي أنيق من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
 </head>
 <body>
 
-<div class="container">
-    <div class="header-bar">
-        <h2 id="pageTitleText">آراء وتقييمات المستخدمين</h2>
-        <!-- قائمة اختيار اللغات -->
-        <select id="langSelector" class="lang-select">
-            <option value="ar">العربية (Arabic)</option>
-            <option value="en">English (الإنجليزية)</option>
-            <option value="ja">日本語 (Japanese)</option>
-        </select>
-    </div>
-
-    <!-- نموذج إضافة تقييم -->
-    <div class="review-form-box">
-        <form id="reviewForm">
-            <div class="form-group">
-                <label for="userName" id="labelName">اسم المستخدم</label>
-                <input type="text" id="userName" required placeholder="اكتب اسمك هنا...">
+    <!-- الهيدر أو رأس الصفحة -->
+    <header class="hero">
+        <div class="container">
+            <div class="logo-area">
+                <h1>SteamScan <span>Pro</span></h1>
             </div>
-            
-            <div class="form-group">
-                <label id="labelStars">التقييم بالنجوم</label>
-                <div class="star-rating" id="starRating">
-                    <span class="star" data-value="1">★</span>
-                    <span class="star" data-value="2">★</span>
-                    <span class="star" data-value="3">★</span>
-                    <span class="star" data-value="4">★</span>
-                    <span class="star" data-value="5">★</span>
+            <div class="hero-content">
+                <!-- إشعار أن هذه النسخة مجانية والنسخ القادمة بمال -->
+                <div style="background-color: #0284c7; color: #fff; padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 700; display: inline-block;">
+                    🎉 تنبيه هام: هذه النسخة الحالية مجانية بالكامل، بينما النسخ والتحديثات القادمة ستكون مدفوعة!
+                </div>
+                <h2>افحص قطع الهاردوير واختبر أداء جهازك مع الألعاب بكل احترافية</h2>
+                <p>الأداة الأقوى لفحص كفاءة قطع الهاردوير، كشف المشاكل، وضمان أفضل أداء وموافقة لتشغيل ألعابك المفضلة بضغطة زر واحدة.</p>
+                <a href="#pricing" class="btn-primary">حمل نسختك الآن</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم المحفظة المؤقتة (مصفرة تماماً) -->
+    <section class="wallet-section">
+        <div class="container">
+            <h2>محفظة الاحتفاظ المؤقت بالأموال</h2>
+            <div class="wallet-grid">
+                <div class="wallet-box">
+                    <h3>⏳ الرصيد المحتفظ به مؤقتاً</h3>
+                    <p id="temp-balance">$0.00</p>
+                </div>
+                <div class="wallet-box">
+                    <h3>📦 النسخ المباعة المعلقة</h3>
+                    <p id="pending-sales">0 مفاتيح</p>
+                </div>
+                <div class="wallet-box action-wallet">
+                    <h3>⚙️ إدارة الرصيد المؤقت</h3>
+                    <button class="withdraw-btn" onclick="resetWallet()">إعادة ضبط المحفظة</button>
                 </div>
             </div>
+        </div>
+    </section>
 
-            <div class="form-group">
-                <label for="userComment" id="labelComment">تعليقك حول البرنامج</label>
-                <textarea id="userComment" rows="4" required placeholder="اكتب تجربتك مع البرنامج..."></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn" id="submitBtnText">إرسال التقييم</button>
-        </form>
-    </div>
-
-    <!-- قسم عرض التعليقات -->
-    <div class="reviews-list" id="reviewsList"></div>
-</div>
-
-<script>
-    // النصوص الخاصة باللغات الثلاث
-    const translations = {
-        ar: {
-            title: "آراء وتقييمات المستخدمين",
-            nameLabel: "اسم المستخدم",
-            namePlaceholder: "اكتب اسمك هنا...",
-            starsLabel: "التقييم بالنجوم",
-            commentLabel: "تعليقك حول البرنامج",
-            commentPlaceholder: "اكتب تجربتك مع البرنامج...",
-            submitBtn: "إرسال التقييم",
-            noReviews: "كن اول من يقيّم البرنامج!"
-        },
-        en: {
-            title: "User Reviews & Ratings",
-            nameLabel: "User Name",
-            namePlaceholder: "Type your name here...",
-            starsLabel: "Star Rating",
-            commentLabel: "Your Feedback",
-            commentPlaceholder: "Write your experience with the app...",
-            submitBtn: "Submit Review",
-            noReviews: "Be the first to review this app!"
-        },
-        ja: {
-            title: "ユーザーレビューと評価",
-            nameLabel: "ユーザー名",
-            namePlaceholder: "お名前を入力してください...",
-            starsLabel: "星評価",
-            commentLabel: "コメント",
-            commentPlaceholder: "アプリの感想を入力してください...",
-            submitBtn: "レビューを送信",
-            noReviews: "最初のレビューを書こう！"
-        }
-    };
-
-    const stars = document.querySelectorAll('.star');
-    const reviewForm = document.getElementById('reviewForm');
-    const reviewsList = document.getElementById('reviewsList');
-    const langSelector = document.getElementById('langSelector');
-    
-    let selectedRating = 5;
-
-    // دالة تطبيق اللغة وتحديث الواجهة والاتجاه
-    function setLanguage(lang) {
-        if (!translations[lang]) lang = 'ar'; // اللغة الافتراضية في حال لم تكن مدعومة
-        
-        langSelector.value = lang;
-        const t = translations[lang];
-
-        document.getElementById('pageTitleText').innerText = t.title;
-        document.getElementById('labelName').innerText = t.nameLabel;
-        document.getElementById('userName').placeholder = t.namePlaceholder;
-        document.getElementById('labelStars').innerText = t.starsLabel;
-        document.getElementById('labelComment').innerText = t.commentLabel;
-        document.getElementById('userComment').placeholder = t.commentPlaceholder;
-        document.getElementById('submitBtnText').innerText = t.submitBtn;
-
-        if (lang === 'ja' || lang === 'en') {
-            document.documentElement.setAttribute('dir', 'ltr');
-            document.documentElement.setAttribute('lang', lang);
-            document.body.setAttribute('dir', 'ltr');
-        } else {
-            document.documentElement.setAttribute('dir', 'rtl');
-            document.documentElement.setAttribute('lang', 'ar');
-            document.body.setAttribute('dir', 'rtl');
-        }
-        loadReviews();
-    }
-
-    // الكشف التلقائي عن لغة جهاز المستخدم عند فتح الصفحة لأول مرة
-    function detectUserLanguage() {
-        // فحص ما إذا كان المستخدم قد اختار لغة من قبل وحفظها
-        let savedLang = localStorage.getItem('userPreferredLang');
-        if (savedLang) {
-            return savedLang;
-        }
-
-        // جلب لغة متصفح أو نظام تشغيل المستخدم
-        let browserLang = navigator.language || navigator.userLanguage;
-        
-        if (browserLang.startsWith('ja')) {
-            return 'ja';
-        } else if (browserLang.startsWith('en')) {
-            return 'en';
-        } else {
-            return 'ar'; // الافتراضي للعربية
-        }
-    }
-
-    // تفاعل النجوم
-    stars.forEach((star, index1) => {
-        star.addEventListener('click', () => {
-            selectedRating = index1 + 1;
-            stars.forEach((star, index2) => {
-                star.style.color = index2 < selectedRating ? '#fbbf24' : '#475569';
-            });
-        });
-    });
-    stars.forEach(star => star.style.color = '#fbbf24');
-
-    // عند تغيير اللغة يدوياً من القائمة
-    langSelector.addEventListener('change', (e) => {
-        const selectedLang = e.target.value;
-        localStorage.setItem('userPreferredLang', selectedLang);
-        setLanguage(selectedLang);
-    });
-
-    // حفظ وعرض التعليقات
-    reviewForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        const name = document.getElementById('userName').value;
-        const comment = document.getElementById('userComment').value;
-        
-        const newReview = {
-            name: name,
-            rating: selectedRating,
-            comment: comment,
-            date: new Date().toLocaleDateString()
-        };
-
-        let reviews = JSON.parse(localStorage.getItem('steamScanReviews')) || [];
-        reviews.unshift(newReview);
-        localStorage.setItem('steamScanReviews', JSON.stringify(reviews));
-
-        reviewForm.reset();
-        selectedRating = 5;
-        stars.forEach(star => star.style.color = '#fbbf24');
-        
-        loadReviews();
-    });
-
-    function loadReviews() {
-        let reviews = JSON.parse(localStorage.getItem('steamScanReviews')) || [];
-        reviewsList.innerHTML = '';
-        
-        const currentLang = langSelector.value;
-        if (reviews.length === 0) {
-            reviewsList.innerHTML = `<p style="text-align:center; color:#64748b;">${translations[currentLang].noReviews}</p>`;
-            return;
-        }
-
-        reviews.forEach(rev => {
-            let starsHtml = '★'.repeat(rev.rating) + '☆'.repeat(5 - rev.rating);
-            
-            const card = document.createElement('div');
-            card.className = 'review-card';
-            card.innerHTML = `
-                <div class="review-header">
-                    <span class="reviewer-name">${rev.name}</span>
-                    <span class="review-stars">${starsHtml}</span>
+    <!-- قسم مميزات البرنامج -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>لماذا تحتاج إلى SteamScan Pro؟</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>⚡ فحص قطع الهاردوير</h3>
+                    <p>تحليل دقيق لكفاءة ومكونات جهازك واكتشاف قدرتها الحقيقية مع الألعاب الحديثة.</p>
                 </div>
-                <p class="review-text">${rev.comment}</p>
-                <small style="color: #64748b; display: block; margin-top: 8px;">${rev.date}</small>
-            `;
-            reviewsList.appendChild(card);
+                <div class="feature-box">
+                    <h3>🔒 حماية متقدمة</h3>
+                    <p>نظام ترخيص وتفعيل ذكي ومشفر يحمي نسختك ويضمن خصوصيتك الكاملة ضد أي تلاعب.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🎨 واجهة عصرية</h3>
+                    <p>تصميم أنيق وسهل الاستخدام يناسب جميع المحترفين والهواة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التحميل (زر التحميل المباشر من Google Drive) -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>حمل البرنامج مجاناً</h2>
+            <div class="pricing-card">
+                <h3>إصدار البرنامج</h3>
+                <div class="price">مجاناً <span>فترة محدودة</span></div>
+                <ul>
+                    <li>✔ فحص شامل لقطع الهاردوير والألعاب</li>
+                    <li>✔ النسخة الحالية متاحة مجاناً للجميع</li>
+                    <li>✔ النسخ والتحديثات القادمة ستكون مدفوعة</li>
+                </ul>
+                
+                <!-- زر التحميل المباشر -->
+                <div class="action-boxes-single" style="margin-top: 25px;">
+                    <a href="https://drive.google.com/uc?export=download&id=1IlDOXCZcde1w0OrV2uhfrEwbulpT3kw1" id="download-btn" class="action-box-btn btn-download" style="display: flex; align-items: center; justify-content: center; background-color: #0284c7; padding: 15px; border-radius: 10px; text-decoration: none; color: #fff; font-weight: 700;" target="_blank">
+                        <span class="icon" style="margin-left: 10px; font-size: 1.5rem;">📥</span>
+                        <span class="title" style="font-size: 1.1rem;">تحميل النسخة المجانية</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم إحصائيات الموقع -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>👥 زوار الموقع</h3>
+                    <p id="visits-count">...</p>
+                </div>
+                <div class="stat-box">
+                    <h3>👁️ إجمالي المشاهدات</h3>
+                    <p id="views-count">...</p>
+                </div>
+                <div class="stat-box">
+                    <h3>📥 عدد التحميلات</h3>
+                    <p id="downloads-count">...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 SteamScan Pro</p>
+    </footer>
+
+    <!-- كود الجافاسكريبت للعدادات وتصفير الرصيد -->
+    <script>
+        // تصفير الرصيد والمسوّقات افتراضياً وحذف الذاكرة المؤقتة القديمة
+        localStorage.removeItem('steam_balance');
+        localStorage.removeItem('steam_sales');
+
+        let currentBalance = 0.00;
+        let currentSales = 0;
+
+        function updateWalletDisplay() {
+            document.getElementById('temp-balance').innerText = `$${currentBalance.toFixed(2)}`;
+            document.getElementById('pending-sales').innerText = `${currentSales} مفاتيح`;
+        }
+
+        function resetWallet() {
+            currentBalance = 0.00;
+            currentSales = 0;
+            updateWalletDisplay();
+            alert('تم تصفير المحفظة بنجاح!');
+        }
+
+        updateWalletDisplay();
+
+        async function updateCounter(namespace, key, elementId) {
+            try {
+                let response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+                let data = await response.json();
+                document.getElementById(elementId).innerText = data.value;
+            } catch (error) {
+                document.getElementById(elementId).innerText = "---";
+            }
+        }
+
+        updateCounter('steamscan_pro_soluq', 'visits', 'visits-count');
+        updateCounter('steamscan_pro_soluq', 'views', 'views-count');
+
+        document.getElementById('download-btn').addEventListener('click', async function() {
+            try {
+                let response = await fetch(`https://api.countapi.xyz/hit/steamscan_pro_soluq/downloads`);
+                let data = await response.json();
+                document.getElementById('downloads-count').innerText = data.value;
+            } catch (error) {}
         });
-    }
 
-    // تشغيل الاكتشاف التلقائي عند تحميل الصفحة
-    document.addEventListener('DOMContentLoaded', () => {
-        const initialLang = detectUserLanguage();
-        setLanguage(initialLang);
-    });
-</script>
-
+        async function getInitialDownloads() {
+            try {
+                let response = await fetch(`https://api.countapi.xyz/get/steamscan_pro_soluq/downloads`);
+                let data = await response.json();
+                document.getElementById('downloads-count').innerText = data.value;
+            } catch (error) {
+                document.getElementById('downloads-count').innerText = "0";
+            }
+        }
+        getInitialDownloads();
+    </script>
 </body>
 </html>
