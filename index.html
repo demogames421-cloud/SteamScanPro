@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SteamScan Pro - فحص قطع الهاردوير وأداء الألعاب</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- استيراد خط عربي أنيق من جوجل -->
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;900&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- الهيدر أو رأس الصفحة -->
+    <header class="hero">
+        <div class="container">
+            <div class="logo-area">
+                <h1>SteamScan <span>Pro</span></h1>
+            </div>
+            <div class="hero-content">
+                <!-- إشعار أن هذه النسخة مجانية والنسخ القادمة بمال -->
+                <div style="background-color: #0284c7; color: #fff; padding: 10px 20px; border-radius: 8px; margin-bottom: 20px; font-weight: 700; display: inline-block;">
+                    🎉 تنبيه هام: هذه النسخة الحالية مجانية بالكامل، بينما النسخ والتحديثات القادمة ستكون مدفوعة!
+                </div>
+                <h2>افحص قطع الهاردوير واختبر أداء جهازك مع الألعاب بكل احترافية</h2>
+                <p>الأداة الأقوى لفحص كفاءة قطع الهاردوير، كشف المشاكل، وضمان أفضل أداء وموافقة لتشغيل ألعابك المفضلة بضغطة زر واحدة.</p>
+                <a href="#pricing" class="btn-primary">حمل نسختك الآن</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- قسم المحفظة المؤقتة (مصفرة تماماً) -->
+    <section class="wallet-section">
+        <div class="container">
+            <h2>محفظة الاحتفاظ المؤقت بالأموال</h2>
+            <div class="wallet-grid">
+                <div class="wallet-box">
+                    <h3>⏳ الرصيد المحتفظ به مؤقتاً</h3>
+                    <p id="temp-balance">$0.00</p>
+                </div>
+                <div class="wallet-box">
+                    <h3>📦 النسخ المباعة المعلقة</h3>
+                    <p id="pending-sales">0 مفاتيح</p>
+                </div>
+                <div class="wallet-box action-wallet">
+                    <h3>⚙️ إدارة الرصيد المؤقت</h3>
+                    <button class="withdraw-btn" onclick="resetWallet()">إعادة ضبط المحفظة</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم مميزات البرنامج -->
+    <section class="features" id="features">
+        <div class="container">
+            <h2>لماذا تحتاج إلى SteamScan Pro؟</h2>
+            <div class="features-grid">
+                <div class="feature-box">
+                    <h3>⚡ فحص قطع الهاردوير</h3>
+                    <p>تحليل دقيق لكفاءة ومكونات جهازك واكتشاف قدرتها الحقيقية مع الألعاب الحديثة.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🔒 حماية متقدمة</h3>
+                    <p>نظام ترخيص وتفعيل ذكي ومشفر يحمي نسختك ويضمن خصوصيتك الكاملة ضد أي تلاعب.</p>
+                </div>
+                <div class="feature-box">
+                    <h3>🎨 واجهة عصرية</h3>
+                    <p>تصميم أنيق وسهل الاستخدام يناسب جميع المحترفين والهواة.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم التحميل (زر التحميل المباشر من Google Drive) -->
+    <section class="pricing" id="pricing">
+        <div class="container">
+            <h2>حمل البرنامج مجاناً</h2>
+            <div class="pricing-card">
+                <h3>إصدار البرنامج</h3>
+                <div class="price">مجاناً <span>فترة محدودة</span></div>
+                <ul>
+                    <li>✔ فحص شامل لقطع الهاردوير والألعاب</li>
+                    <li>✔ النسخة الحالية متاحة مجاناً للجميع</li>
+                    <li>✔ النسخ والتحديثات القادمة ستكون مدفوعة</li>
+                </ul>
+                
+                <!-- زر التحميل المباشر -->
+                <div class="action-boxes-single" style="margin-top: 25px;">
+                    <a href="https://drive.google.com/uc?export=download&id=1IlDOXCZcde1w0OrV2uhfrEwbulpT3kw1" id="download-btn" class="action-box-btn btn-download" style="display: flex; align-items: center; justify-content: center; background-color: #0284c7; padding: 15px; border-radius: 10px; text-decoration: none; color: #fff; font-weight: 700;" target="_blank">
+                        <span class="icon" style="margin-left: 10px; font-size: 1.5rem;">📥</span>
+                        <span class="title" style="font-size: 1.1rem;">تحميل النسخة المجانية</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- قسم إحصائيات الموقع -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-box">
+                    <h3>👥 زوار الموقع</h3>
+                    <p id="visits-count">...</p>
+                </div>
+                <div class="stat-box">
+                    <h3>👁️ إجمالي المشاهدات</h3>
+                    <p id="views-count">...</p>
+                </div>
+                <div class="stat-box">
+                    <h3>📥 عدد التحميلات</h3>
+                    <p id="downloads-count">...</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- التذييل -->
+    <footer>
+        <p>جميع الحقوق محفوظة &copy; 2026 SteamScan Pro</p>
+    </footer>
+
+    <!-- كود الجافاسكريبت للعدادات وتصفير الرصيد -->
+    <script>
+        // تصفير الرصيد والمسوّقات افتراضياً وحذف الذاكرة المؤقتة القديمة
+        localStorage.removeItem('steam_balance');
+        localStorage.removeItem('steam_sales');
+
+        let currentBalance = 0.00;
+        let currentSales = 0;
+
+        function updateWalletDisplay() {
+            document.getElementById('temp-balance').innerText = `$${currentBalance.toFixed(2)}`;
+            document.getElementById('pending-sales').innerText = `${currentSales} مفاتيح`;
+        }
+
+        function resetWallet() {
+            currentBalance = 0.00;
+            currentSales = 0;
+            updateWalletDisplay();
+            alert('تم تصفير المحفظة بنجاح!');
+        }
+
+        updateWalletDisplay();
+
+        async function updateCounter(namespace, key, elementId) {
+            try {
+                let response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+                let data = await response.json();
+                document.getElementById(elementId).innerText = data.value;
+            } catch (error) {
+                document.getElementById(elementId).innerText = "---";
+            }
+        }
+
+        updateCounter('steamscan_pro_soluq', 'visits', 'visits-count');
+        updateCounter('steamscan_pro_soluq', 'views', 'views-count');
+
+        document.getElementById('download-btn').addEventListener('click', async function() {
+            try {
+                let response = await fetch(`https://api.countapi.xyz/hit/steamscan_pro_soluq/downloads`);
+                let data = await response.json();
+                document.getElementById('downloads-count').innerText = data.value;
+            } catch (error) {}
+        });
+
+        async function getInitialDownloads() {
+            try {
+                let response = await fetch(`https://api.countapi.xyz/get/steamscan_pro_soluq/downloads`);
+                let data = await response.json();
+                document.getElementById('downloads-count').innerText = data.value;
+            } catch (error) {
+                document.getElementById('downloads-count').innerText = "0";
+            }
+        }
+        getInitialDownloads();
+    </script>
+</body>
+</html>

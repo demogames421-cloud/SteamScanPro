@@ -1,0 +1,315 @@
+/* إعدادات عامة */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Cairo', sans-serif;
+}
+
+body {
+    background-color: #0f172a;
+    color: #f8fafc;
+    line-height: 1.6;
+}
+
+.container {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* الهيدر */
+.hero {
+    background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+    padding: 40px 0 60px 0;
+    text-align: center;
+    border-bottom: 2px solid #334155;
+}
+
+.logo-area h1 {
+    font-size: 2.2rem;
+    color: #fff;
+    margin-bottom: 30px;
+}
+
+.logo-area h1 span {
+    color: #38bdf8;
+}
+
+.hero-content h2 {
+    font-size: 2.3rem;
+    margin-bottom: 20px;
+    color: #f1f5f9;
+}
+
+.hero-content p {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+.btn-primary {
+    display: inline-block;
+    background-color: #0284c7;
+    color: white;
+    padding: 12px 30px;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 1.1rem;
+    transition: background 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #0ea5e9;
+}
+
+/* قسم المحفظة المؤقتة للأموال */
+.wallet-section {
+    padding: 40px 0;
+    background-color: #111827;
+    border-bottom: 1px solid #334155;
+    text-align: center;
+}
+
+.wallet-section h2 {
+    font-size: 1.8rem;
+    margin-bottom: 25px;
+    color: #38bdf8;
+}
+
+.wallet-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.wallet-box {
+    background-color: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    text-align: center;
+}
+
+.wallet-box h3 {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.wallet-box p {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #10b981;
+}
+
+.withdraw-btn {
+    background-color: #10b981;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+    margin-top: 10px;
+    width: 100%;
+}
+
+.withdraw-btn:hover {
+    background-color: #059669;
+}
+
+/* قسم المميزات */
+.features {
+    padding: 60px 0;
+    text-align: center;
+}
+
+.features h2 {
+    font-size: 2rem;
+    margin-bottom: 40px;
+}
+
+.features-grid {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    flex-wrap: wrap;
+    direction: ltr;
+}
+
+.feature-box {
+    background-color: #1e293b;
+    padding: 30px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    width: 300px;
+    text-align: right;
+    transition: transform 0.3s ease;
+}
+
+.feature-box:hover {
+    transform: translateY(-5px);
+}
+
+.feature-box h3 {
+    margin-bottom: 15px;
+    color: #38bdf8;
+}
+
+.feature-box p {
+    color: #94a3b8;
+}
+
+/* قسم الأسعار */
+.pricing {
+    padding: 50px 0;
+    text-align: center;
+}
+
+.pricing h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+}
+
+.pricing-card {
+    background-color: #1e293b;
+    border: 2px solid #0284c7;
+    border-radius: 16px;
+    padding: 40px;
+    max-width: 450px;
+    margin: 0 auto;
+}
+
+.pricing-card h3 {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+.price {
+    font-size: 3rem;
+    font-weight: 900;
+    color: #38bdf8;
+    margin-bottom: 20px;
+}
+
+.price span {
+    font-size: 1rem;
+    color: #94a3b8;
+}
+
+.pricing-card ul {
+    list-style: none;
+    margin-bottom: 30px;
+    text-align: right;
+}
+
+.pricing-card ul li {
+    margin-bottom: 10px;
+    color: #cbd5e1;
+}
+
+/* تصميم المربعات للأزرار تحت الأسعار بجانب بعضها */
+.action-boxes-group {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 25px;
+    direction: ltr;
+}
+
+.action-box-btn {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px 10px;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 700;
+    border: 1px solid #334155;
+    transition: all 0.3s ease;
+}
+
+.action-box-btn .icon {
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.action-box-btn .title {
+    font-size: 0.95rem;
+    color: #fff;
+}
+
+.btn-whatsapp {
+    background-color: #0284c7;
+}
+
+.btn-whatsapp:hover {
+    background-color: #0ea5e9;
+    transform: translateY(-3px);
+}
+
+.btn-download {
+    background-color: #334155;
+}
+
+.btn-download:hover {
+    background-color: #475569;
+    transform: translateY(-3px);
+}
+
+/* قسم إحصائيات العدادات */
+.stats-section {
+    padding: 40px 0 60px 0;
+    background-color: #0f172a;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+    text-align: center;
+    direction: ltr;
+}
+
+.stat-box {
+    background-color: #1e293b;
+    padding: 25px;
+    border-radius: 12px;
+    border: 1px solid #334155;
+    direction: rtl;
+    transition: transform 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-3px);
+}
+
+.stat-box h3 {
+    font-size: 1.1rem;
+    color: #94a3b8;
+    margin-bottom: 10px;
+}
+
+.stat-box p {
+    font-size: 2rem;
+    font-weight: 900;
+    color: #38bdf8;
+}
+
+/* التذييل */
+footer {
+    text-align: center;
+    padding: 20px 0;
+    background-color: #090d16;
+    color: #64748b;
+    font-size: 0.9rem;
+    border-top: 1px solid #1e293b;
+}
