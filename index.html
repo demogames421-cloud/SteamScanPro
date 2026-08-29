@@ -22,7 +22,7 @@
             font-size: 14px;
             font-weight: bold;
         }
-        .review-section, .review-form-box {
+        .review-section, .review-form-box, .social-section {
             background: #111827;
             padding: 30px;
             border-radius: 12px;
@@ -31,9 +31,37 @@
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             text-align: right;
         }
-        body[dir="ltr"] .review-section, body[dir="ltr"] .review-form-box {
+        body[dir="ltr"] .review-section, body[dir="ltr"] .review-form-box, body[dir="ltr"] .social-section {
             text-align: left;
         }
+        .social-section {
+            text-align: center;
+        }
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            flex-wrap: wrap;
+            margin-top: 20px;
+        }
+        .social-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 20px;
+            border-radius: 8px;
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.3s;
+        }
+        .social-btn:hover {
+            opacity: 0.85;
+        }
+        .btn-facebook { background: #1877f2; }
+        .btn-twitter { background: #000000; border: 1px solid #334155; }
+        .btn-whatsapp { background: #25d366; }
+
         .form-group {
             margin-bottom: 20px;
         }
@@ -182,6 +210,20 @@
         </div>
     </section>
 
+    <!-- معرض صور البرنامج -->
+    <section class="review-section" style="text-align: center;">
+        <h3 style="color: #38bdf8; margin-bottom: 20px;">📸 صور من داخل البرنامج</h3>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 15px;">
+            <img src="1.png" alt="لقطة 1" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
+            <img src="2.png" alt="لقطة 2" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
+            <img src="3.png" alt="لقطة 3" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
+            <img src="4.png" alt="لقطة 4" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
+        </div>
+        <div style="display: flex; justify-content: center;">
+            <img src="5.png" alt="لقطة 5" style="width: 100%; max-width: 400px; border-radius: 8px; border: 1px solid #334155;">
+        </div>
+    </section>
+
     <section class="pricing" id="pricing">
         <div class="container">
             <h2 id="downloadSectionTitle">حمل البرنامج مجاناً</h2>
@@ -236,6 +278,23 @@
         <div class="review-section">
             <h3 id="reviewsHeading" style="color: #38bdf8; margin-bottom: 20px;">آراء وتقييمات المستخدمين</h3>
             <div class="reviews-list" id="reviewsList"></div>
+        </div>
+
+        <!-- قسم وسائل التواصل الاجتماعي -->
+        <div class="social-section">
+            <h3 id="socialHeading" style="color: #38bdf8; margin-bottom: 10px;">تواصل معنا عبر منصاتنا</h3>
+            <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">يسعدنا تواصلكم واستفساراتكم في أي وقت عبر القنوات التالية:</p>
+            <div class="social-links">
+                <a href="https://www.facebook.com/MohamedHmnni" target="_blank" class="social-btn btn-facebook">
+                    <span>📘</span> فيسبوك (Facebook)
+                </a>
+                <a href="https://x.com/demogames421" target="_blank" class="social-btn btn-twitter">
+                    <span>𝕏</span> منصة إكس (X)
+                </a>
+                <a href="https://wa.me/218927660474" target="_blank" class="social-btn btn-whatsapp">
+                    <span>💬</span> واتساب (WhatsApp)
+                </a>
+            </div>
         </div>
     </div>
 
@@ -299,6 +358,7 @@
                 submitBtnText: "إرسال التقييم",
                 reviewsHeading: "آراء وتقييمات المستخدمين",
                 noReviews: "كن اول من يقيّم البرنامج!",
+                socialHeading: "تواصل معنا عبر منصاتنا",
                 stat1Title: "👥 زوار الموقع",
                 stat2Title: "👁️ إجمالي المشاهدات",
                 stat3Title: "📥 عدد التحميلات",
@@ -339,6 +399,7 @@
                 submitBtnText: "Submit Review",
                 reviewsHeading: "User Reviews & Ratings",
                 noReviews: "Be the first to review this app!",
+                socialHeading: "Connect With Us",
                 stat1Title: "👥 Site Visitors",
                 stat2Title: "👁️ Total Views",
                 stat3Title: "📥 Total Downloads",
@@ -379,6 +440,7 @@
                 submitBtnText: "レビューを送信",
                 reviewsHeading: "ユーザーレビューと評価",
                 noReviews: "最初のレビューを書こう！",
+                socialHeading: "SNSリンク",
                 stat1Title: "👥 サイト訪問者",
                 stat2Title: "👁️ 総閲覧数",
                 stat3Title: "📥 総ダウンロード数",
@@ -430,6 +492,7 @@
             document.getElementById('userComment').placeholder = t.commentPlaceholder;
             document.getElementById('submitBtnText').innerText = t.submitBtnText;
             document.getElementById('reviewsHeading').innerText = t.reviewsHeading;
+            document.getElementById('socialHeading').innerText = t.socialHeading;
             document.getElementById('stat1Title').innerText = t.stat1Title;
             document.getElementById('stat2Title').innerText = t.stat2Title;
             document.getElementById('stat3Title').innerText = t.stat3Title;
@@ -459,7 +522,6 @@
             setLanguage(selectedLang);
         });
 
-        // إدارة التقييم بالنجوم (تبدأ بنجمة واحدة افتراضياً)
         const stars = document.querySelectorAll('.star');
         let selectedRating = 1;
 
@@ -476,7 +538,6 @@
             });
         });
         
-        // ضبط العرض الافتراضي على نجمة واحدة عند بدء التشغيل
         updateStarsDisplay(selectedRating);
 
         const reviewForm = document.getElementById('reviewForm');
