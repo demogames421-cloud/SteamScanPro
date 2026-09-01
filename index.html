@@ -210,17 +210,14 @@
         </div>
     </section>
 
-    <!-- معرض صور البرنامج -->
+    <!-- مقطع فيديو توضيحي للبرنامج بدل معرض الصور -->
     <section class="review-section" style="text-align: center;">
-        <h3 style="color: #38bdf8; margin-bottom: 20px;">📸 صور من داخل البرنامج</h3>
-        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 15px; margin-bottom: 15px;">
-            <img src="1.png" alt="لقطة 1" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
-            <img src="2.png" alt="لقطة 2" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
-            <img src="3.png" alt="لقطة 3" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
-            <img src="4.png" alt="لقطة 4" style="width: 100%; border-radius: 8px; border: 1px solid #334155;">
-        </div>
-        <div style="display: flex; justify-content: center;">
-            <img src="5.png" alt="لقطة 5" style="width: 100%; max-width: 400px; border-radius: 8px; border: 1px solid #334155;">
+        <h3 id="videoSectionTitle" style="color: #38bdf8; margin-bottom: 20px;">🎥 فيديو توضيحي للبرنامج من الداخل</h3>
+        <div style="position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 2px solid #334155; box-shadow: 0 8px 25px rgba(0,0,0,0.6); background: #000;">
+            <video controls autoplay muted loop style="width: 100%; display: block; height: auto;">
+                <source src="demo-video.mp4" type="video/mp4">
+                متصفحك لا يدعم عرض الفيديو.
+            </video>
         </div>
     </section>
 
@@ -342,6 +339,7 @@
                 feat2Desc: "نظام ترخيص وتفعيل ذكي ومشفر يحمي نسختك ويضمن خصوصيتك الكاملة ضد أي تلاعب.",
                 feat3Title: "🎨 واجهة عصرية",
                 feat3Desc: "تصميم أنيق وسهل الاستخدام يناسب جميع المحترفين والهواة.",
+                videoSectionTitle: "🎥 فيديو توضيحي للبرنامج من الداخل",
                 downloadSectionTitle: "حمل البرنامج مجاناً",
                 editionTitle: "إصدار البرنامج",
                 priceText: "مجاناً <span>فترة محدودة</span>",
@@ -383,6 +381,7 @@
                 feat2Desc: "Smart encrypted license system protecting your copy and privacy against any tampering.",
                 feat3Title: "🎨 Modern Interface",
                 feat3Desc: "Elegant and user-friendly design suited for all professionals and enthusiasts.",
+                videoSectionTitle: "🎥 Software Demo Video",
                 downloadSectionTitle: "Download App for Free",
                 editionTitle: "Software Edition",
                 priceText: "Free <span>Limited Time</span>",
@@ -424,6 +423,7 @@
                 feat2Desc: "改ざんから保護するスマートで暗号化されたライセンスシステム。",
                 feat3Title: "🎨 モダンなインターフェース",
                 feat3Desc: "すべてのプロフェッショナルや愛好家に適したエレガントで使いやすいデザイン。",
+                videoSectionTitle: "🎥 ソフトウェアデモ動画",
                 downloadSectionTitle: "無料でアプリをダウンロード",
                 editionTitle: "ソフトウェアエディション",
                 priceText: "無料 <span>期間限定</span>",
@@ -476,6 +476,7 @@
             document.getElementById('feat2Desc').innerText = t.feat2Desc;
             document.getElementById('feat3Title').innerText = t.feat3Title;
             document.getElementById('feat3Desc').innerText = t.feat3Desc;
+            document.getElementById('videoSectionTitle').innerText = t.videoSectionTitle;
             document.getElementById('downloadSectionTitle').innerText = t.downloadSectionTitle;
             document.getElementById('editionTitle').innerText = t.editionTitle;
             document.getElementById('priceText').innerHTML = t.priceText;
