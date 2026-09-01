@@ -210,12 +210,12 @@
         </div>
     </section>
 
-    <!-- مقطع فيديو توضيحي للبرنامج بدل معرض الصور -->
+    <!-- عرض فيديو البرنامج -->
     <section class="review-section" style="text-align: center;">
         <h3 id="videoSectionTitle" style="color: #38bdf8; margin-bottom: 20px;">🎥 فيديو توضيحي للبرنامج من الداخل</h3>
         <div style="position: relative; width: 100%; max-width: 700px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 2px solid #334155; box-shadow: 0 8px 25px rgba(0,0,0,0.6); background: #000;">
             <video controls autoplay muted loop style="width: 100%; display: block; height: auto;">
-                <source src="demo-video.mp4" type="video/mp4">
+                <source src="SteamScanProV1.0.8.mp4" type="video/mp4">
                 متصفحك لا يدعم عرض الفيديو.
             </video>
         </div>
@@ -277,7 +277,7 @@
             <div class="reviews-list" id="reviewsList"></div>
         </div>
 
-        <!-- قسم وسائل التواصل الاجتماعي -->
+        <!-- وسائل التواصل الاجتماعي -->
         <div class="social-section">
             <h3 id="socialHeading" style="color: #38bdf8; margin-bottom: 10px;">تواصل معنا عبر منصاتنا</h3>
             <p style="color: #94a3b8; font-size: 14px; margin-bottom: 20px;">يسعدنا تواصلكم واستفساراتكم في أي وقت عبر القنوات التالية:</p>
@@ -631,7 +631,7 @@
             } catch (error) {}
         });
 
-        async function getInitialDownloads() {
+        async function getOnlineDownloads() {
             try {
                 let response = await fetch(`https://api.countapi.xyz/get/steamscan_pro_soluq/downloads`);
                 let data = await response.json();
@@ -640,7 +640,7 @@
                 document.getElementById('downloads-count').innerText = "0";
             }
         }
-        getInitialDownloads();
+        getOnlineDownloads();
 
         document.addEventListener('DOMContentLoaded', () => {
             setLanguage(detectUserLanguage());
