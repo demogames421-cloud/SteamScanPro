@@ -610,32 +610,33 @@
 
         updateWalletDisplay();
 
+        // التعديل هنا: استخدام خدمة CounterAPI.dev البديلة والمستقرة للعدادات
         async function updateCounter(namespace, key, elementId) {
             try {
-                let response = await fetch(`https://api.countapi.xyz/hit/${namespace}/${key}`);
+                let response = await fetch(`https://api.counterapi.dev/v1/${namespace}/${key}/up`);
                 let data = await response.json();
-                document.getElementById(elementId).innerText = data.value;
+                document.getElementById(elementId).innerText = data.count;
             } catch (error) {
                 document.getElementById(elementId).innerText = "---";
             }
         }
 
-        updateCounter('steamscan_pro_soluq', 'visits', 'visits-count');
-        updateCounter('steamscan_pro_soluq', 'views', 'views-count');
+        updateCounter('steamscanpro', 'visits', 'visits-count');
+        updateCounter('steamscanpro', 'views', 'views-count');
 
         document.getElementById('download-btn').addEventListener('click', async function() {
             try {
-                let response = await fetch(`https://api.countapi.xyz/hit/steamscan_pro_soluq/downloads`);
+                let response = await fetch(`https://api.counterapi.dev/v1/steamscanpro/downloads/up`);
                 let data = await response.json();
-                document.getElementById('downloads-count').innerText = data.value;
+                document.getElementById('downloads-count').innerText = data.count;
             } catch (error) {}
         });
 
         async function getOnlineDownloads() {
             try {
-                let response = await fetch(`https://api.countapi.xyz/get/steamscan_pro_soluq/downloads`);
+                let response = await fetch(`https://api.counterapi.dev/v1/steamscanpro/downloads/`);
                 let data = await response.json();
-                document.getElementById('downloads-count').innerText = data.value;
+                document.getElementById('downloads-count').innerText = data.count;
             } catch (error) {
                 document.getElementById('downloads-count').innerText = "0";
             }
