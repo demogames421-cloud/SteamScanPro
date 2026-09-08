@@ -513,7 +513,7 @@
 
         function detectUserLanguage() {
             let savedLang = localStorage.getItem('userPreferredLang');
-            if (savedLang) return savedLang;
+            if (savedLang && translations[savedLang]) return savedLang;
             return 'ar';
         }
 
@@ -597,7 +597,7 @@
         function updateWalletDisplay() {
             document.getElementById('temp-balance').innerText = `$${currentBalance.toFixed(2)}`;
             const currentLang = langSelector.value;
-            const keysWord = translations[currentLang].keysText;
+            const keysWord = translations[currentLang] ? translations[currentLang].keysText : 'مفاتيح';
             document.getElementById('pending-sales').innerText = `${currentSalesVal} ${keysWord}`;
         }
 
@@ -610,51 +610,55 @@
 
         updateWalletDisplay();
 
-        // نظام جلب وتحديث العدادات الحقيقية عبر CounterAPI.dev
+        // نظام جلب وتحديث العدادات الحقيقية بدون أي قيم Undefined
         async function handleRealCounters() {
             const namespace = 'steamscanpro_real';
             
             try {
-                // 1. حساب الزيارات الحقيقية (مرة واحدة لكل مستخدم في الجلسة Session)
                 if (!sessionStorage.getItem('visited_real')) {
                     sessionStorage.setItem('visited_real', 'true');
                     let res = await fetch(`https://api.counterapi.dev/v1/${namespace}/visits/up`);
                     let data = await res.json();
-                    document.getElementById('visits-count').innerText = data.count;
+                    if(data && typeof data.count !== 'undefined') {
+                        document.getElementById('visits-count').innerText = data.count;
+                    }
                 } else {
                     let res = await fetch(`https://api.counterapi.dev/v1/${namespace}/visits/`);
                     let data = await res.json();
-                    document.getElementById('visits-count').innerText = data.count;
+                    if(data && typeof data.count !== 'undefined') {
+                        document.getElementById('visits-count').innerText = data.count;
+                    }
                 }
 
-                // 2. حساب إجمالي المشاهدات الحقيقية (مع כל تحديث للصفحة)
                 let viewsRes = await fetch(`https://api.counterapi.dev/v1/${namespace}/views/up`);
                 let viewsData = await viewsRes.json();
-                document.getElementById('views-count').innerText = viewsData.count;
+                if(viewsData && typeof viewsData.count !== 'undefined') {
+                    document.getElementById('views-count').innerText = viewsData.count;
+                }
 
-                // 3. جلب عدد التحميلات الحقيقي الحالي
                 let downloadsRes = await fetch(`https://api.counterapi.dev/v1/${namespace}/downloads/`);
                 let downloadsData = await downloadsRes.json();
-                document.getElementById('downloads-count').innerText = downloadsData.count;
+                if(downloadsData && typeof downloadsData.count !== 'undefined') {
+                    document.getElementById('downloads-count').innerText = downloadsData.count;
+                }
 
             } catch (err) {
-                // قيم احتياطية في حال انقطاع الاتصال المؤقت بالإنترنت
                 document.getElementById('visits-count').innerText = "1";
                 document.getElementById('views-count').innerText = "1";
                 document.getElementById('downloads-count').innerText = "0";
             }
         }
 
-        // زيادة عداد التحميلات فعلياً عند الضغط على زر التحميل
         document.getElementById('download-btn').addEventListener('click', async function() {
             try {
                 let res = await fetch(`https://api.counterapi.dev/v1/steamscanpro_real/downloads/up`);
                 let data = await res.json();
-                document.getElementById('downloads-count').innerText = data.count;
+                if(data && typeof data.count !== 'undefined') {
+                    document.getElementById('downloads-count').innerText = data.count;
+                }
             } catch (error) {}
         });
 
-        // تشغيل العدادات الحقيقية عند تحميل الصفحة
         handleRealCounters();
 
         document.addEventListener('DOMContentLoaded', () => {
